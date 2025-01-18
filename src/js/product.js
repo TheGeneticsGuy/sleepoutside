@@ -2,14 +2,13 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { findProductById } from "./productData.mjs";
 
 function addProductToCart(product) {
-
   let allProductsInCart = getLocalStorage("so-cart");
 
   if (Array.isArray(allProductsInCart)) {
     allProductsInCart.push(product);
   } else {
     allProductsInCart = [product];
-  };
+  }
 
   setLocalStorage("so-cart", allProductsInCart);
 }
