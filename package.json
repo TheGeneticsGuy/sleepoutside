@@ -10,12 +10,11 @@
     "lint": "eslint *.js src/**/*.js",
     "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
     "test": "jest"
-    
   },
   "author": "Shane Thompson",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.26.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "jest": "^29.2.2",
