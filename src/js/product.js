@@ -9,7 +9,7 @@ function addProductToCart(product) {
   } else {
     allProductsInCart = [product];
   }
-  console.log(`Adding to Cart item #: ${allProductsInCart.length}`)
+  console.log(`Adding to Cart item #: ${allProductsInCart.length}`);
 
   setLocalStorage("so-cart", allProductsInCart);
 }
