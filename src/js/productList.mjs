@@ -2,6 +2,7 @@ import { getProductsByCategory } from "./externalServices.mjs";
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+  console.log(product);
   return `<li class="product-card">
       <a href="../product_pages/index.html?product=${product.Id}">
       <img
