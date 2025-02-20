@@ -3,9 +3,7 @@ import checkoutProcess from "./checkoutProcess.mjs";
 
 loadHeaderFooter();
 
-setTimeout(() => {
-  checkoutProcess.init("so-cart", ".checkout-summary");
-}, 100);  // Adding a slight delay
+checkoutProcess.init("so-cart", ".checkout-summary");
 
 document
   .querySelector("#zip")
