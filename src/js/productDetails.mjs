@@ -5,7 +5,9 @@ let product = {};
 
 export default async function productDetails(productId) {
     // get the details for the current product. findProductById will return a promise! use await or .then() to process it
+    console.log("Test1")
     product = await findProductById(productId);
+    console.log("Test2")
     console.log(product);
     // once we have the product details we can render out the HTML
     renderProductDetails();
