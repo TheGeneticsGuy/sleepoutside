@@ -25,6 +25,7 @@ function addToCart() {
 }
 
 function renderProductDetails() {
+    console.log("TEST0");
     document.querySelector("#productName").innerText = product.Brand.Name;
     document.querySelector("#productNameWithoutBrand").innerText =
         product.NameWithoutBrand;

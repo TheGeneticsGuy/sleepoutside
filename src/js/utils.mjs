@@ -36,7 +36,7 @@ export function renderListWithTemplate(
   position = "afterbegin",
   clear = true
 ) {
-  console.log(templateFn);
+
   if (clear) {
     parentElement.innerHTML = "";
   }
