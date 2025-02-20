@@ -26,7 +26,7 @@ function packageItems(items) {
 }
 
 const checkoutProcess = {
-    key: "so-cart",
+    key: "",
     outputSelector: "",
     list: [],
     itemTotal: 0,
@@ -36,7 +36,8 @@ const checkoutProcess = {
     init: function (key, outputSelector) {
         this.key = key;
         this.outputSelector = outputSelector;
-        this.list = getLocalStorage(key);
+        const cartData = getLocalStorage(key); // Get the cart data
+        this.list = cartData ? cartData : [];   // Assign empty array if null.
         this.calculateItemSummary();
     },
     calculateItemSummary: function () {
