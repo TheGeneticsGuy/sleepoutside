@@ -26,7 +26,7 @@ function packageItems(items) {
 }
 
 const checkoutProcess = {
-    key: "",
+    key: "so-cart",
     outputSelector: "",
     list: [],
     itemTotal: 0,
