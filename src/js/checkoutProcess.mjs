@@ -90,7 +90,7 @@ const checkoutProcess = {
             const res = await checkout(json);
             console.log(res);
             setLocalStorage("so-cart", []);
-            location.assign("./success.html");
+            location.assign("/checkout/success.html");
         } catch (err) {
             // get rid of any preexisting alerts.
             removeAllAlerts();
