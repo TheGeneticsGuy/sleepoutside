@@ -1,4 +1,9 @@
-import { getLocalStorage } from "./utils.mjs";
+import {
+    setLocalStorage,
+    getLocalStorage,
+    alertMessage,
+    removeAllAlerts,
+} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 function formDataToJSON(formElement) {
@@ -36,8 +41,7 @@ const checkoutProcess = {
     init: function (key, outputSelector) {
         this.key = key;
         this.outputSelector = outputSelector;
-        const cartData = getLocalStorage(key); // Get the cart data
-        this.list = cartData ? cartData : [];   // Assign empty array if null.
+        this.list = getLocalStorage(key);
         this.calculateItemSummary();
     },
     calculateItemSummary: function () {
@@ -47,11 +51,10 @@ const checkoutProcess = {
         const itemNumElement = document.querySelector(
             this.outputSelector + " #num-items"
         );
-
         itemNumElement.innerText = this.list.length;
         // calculate the total of all the items in the cart
         const amounts = this.list.map((item) => item.FinalPrice);
-        this.itemTotal = amounts.reduce((sum, item) => sum + item);
+        this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
         summaryElement.innerText = "$" + this.itemTotal;
     },
     calculateOrdertotal: function () {
@@ -86,7 +89,15 @@ const checkoutProcess = {
         try {
             const res = await checkout(json);
             console.log(res);
+            setLocalStorage("so-cart", []);
+            location.assign("/checkout/success.html");
         } catch (err) {
+            // get rid of any preexisting alerts.
+            removeAllAlerts();
+            for (let message in err.message) {
+                alertMessage(err.message[message]);
+            }
+
             console.log(err);
         }
     },
