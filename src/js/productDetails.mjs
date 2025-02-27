@@ -12,14 +12,11 @@ export default async function productDetails(productId) {
     document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 function addToCart() {
-    let cartContents = getLocalStorage("so-cart");
-    //check to see if there was anything there
-    if (!cartContents) {
-        cartContents = [];
+    let allProductsInCart = getLocalStorage("so-cart");
+    // If it's not an array, wrap it in one
+    if (!Array.isArray(allProductsInCart)) {
+        allProductsInCart = allProductsInCart ? [allProductsInCart] : [];
     }
-    // then add the current product to the list
-    cartContents.push(product);
-    setLocalStorage("so-cart", cartContents);
     alertMessage(`${product.NameWithoutBrand} added to cart!`);
 }
 function renderProductDetails() {

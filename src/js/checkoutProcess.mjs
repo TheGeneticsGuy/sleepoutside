@@ -41,7 +41,8 @@ const checkoutProcess = {
     init: function (key, outputSelector) {
         this.key = key;
         this.outputSelector = outputSelector;
-        this.list = getLocalStorage(key);
+        const cartData = getLocalStorage(key); // Get the cart data
+        this.list = cartData ? cartData : [];   // Assign empty array if null.
         this.calculateItemSummary();
     },
     calculateItemSummary: function () {
