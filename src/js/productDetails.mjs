@@ -12,11 +12,12 @@ export default async function productDetails(productId) {
     document.getElementById("addToCart").addEventListener("click", addToCart);
 }
 function addToCart() {
-    let allProductsInCart = getLocalStorage("so-cart");
-    // If it's not an array, wrap it in one
+    let allProductsInCart = getLocalStorage("so-cart") || [];
     if (!Array.isArray(allProductsInCart)) {
-        allProductsInCart = allProductsInCart ? [allProductsInCart] : [];
+        allProductsInCart = [allProductsInCart];
     }
+    allProductsInCart.push(product);                    // Add the current product
+    setLocalStorage("so-cart", allProductsInCart);      // Save back to localStorage
     alertMessage(`${product.NameWithoutBrand} added to cart!`);
 }
 function renderProductDetails() {

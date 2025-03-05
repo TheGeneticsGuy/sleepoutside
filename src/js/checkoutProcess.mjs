@@ -42,9 +42,13 @@ const checkoutProcess = {
         this.key = key;
         this.outputSelector = outputSelector;
         const cartData = getLocalStorage(key); // Get the cart data
-        this.list = cartData ? cartData : [];   // Assign empty array if null.
+        if (!cartData) {
+            setLocalStorage(key, []);
+        }
+        this.list = getLocalStorage(key)
         this.calculateItemSummary();
     },
+
     calculateItemSummary: function () {
         const summaryElement = document.querySelector(
             this.outputSelector + " #cartTotal"
@@ -53,9 +57,9 @@ const checkoutProcess = {
             this.outputSelector + " #num-items"
         );
         itemNumElement.innerText = this.list.length;
-        // calculate the total of all the items in the cart
+        // calculate the total of all the 1items in the cart
         const amounts = this.list.map((item) => item.FinalPrice);
-        this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
+        this.itemTotal = amounts.reduce((sum, item) => sum + item);
         summaryElement.innerText = "$" + this.itemTotal;
     },
     calculateOrdertotal: function () {
